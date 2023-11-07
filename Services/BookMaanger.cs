@@ -55,6 +55,15 @@ namespace Services
             if (entity is null)
                 throw new Exception($"Book with id: {id} could not found.");
 
+            if(book is null)
+                throw new ArgumentNullException(nameof (book));
+
+            entity.Title = book.Title;
+            entity.Price = book.Price;
+
+            manager.Book.UpdateOneBook(entity);
+            manager.Save();
+
 
         }
     }
